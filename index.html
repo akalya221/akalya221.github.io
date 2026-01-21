@@ -460,30 +460,109 @@
         </section>
 
         <!-- Certifications Section -->
-        <section id="certifications" class="section">
-            <h2 class="section-title">Certifications</h2>
-            <div class="about-content">
-                <p>NPTEL Certificate-</p>
-                <p>Online Internship - CodSoft</p>
-                <p>Additional Certification - </p>
-            </div>
-        </section>
+ <!-- Certifications Section - Replace your existing certification section with this -->
+<section id="certifications" class="section">
+    <h2 class="section-title">Certifications</h2>
+    <div class="certifications-grid">
+        <!-- NPTEL Certificate -->
+        <div class="cert-card">
+            <div class="cert-icon">🎓</div>
+            <h3>NPTEL Elite Certification</h3>
+            <p>Introduction to industry 4.0 and indurstrial internet of things</p>
+            <a href="nptel-certificate.pdf" class="cert-btn" target="_blank">View Certificate</a>
+        </div>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <h2 class="section-title">Direct Inquiry</h2>
-            <form class="contact-form" onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <input type="text" placeholder="Your Full Name" required>
-                    <input type="email" placeholder="Your Email Address" required>
-                </div>
-                <input type="text" placeholder="Subject" required>
-                <textarea placeholder="Write your message here..." required></textarea>
-                <button type="submit" class="submit-btn">Send Message ✈️</button>
-            </form>
-        </section>
+        <!-- CodSoft Internship -->
+        <div class="cert-card">
+            <div class="cert-icon">💼</div>
+            <h3>Online Internship</h3>
+            <p>Company: CodSoft</p>
+            <a href="codsoft-internship.pdf" class="cert-btn" target="_blank">View Certificate</a>
+        </div>
+
+        <!-- Cloud Computing Certificate -->
+        <div class="cert-card">
+            <div class="cert-icon">☁️</div>
+            <h3>Cloud Computing</h3>
+            <p>NPTEL Certification</p>
+            <a href="Cloud Computing.pdf" class="cert-btn" target="_blank">View Certificate</a>
+        </div>
+
+        <!-- Successfully Completed Certificate -->
+        <div class="cert-card">
+            <div class="cert-icon">✅</div>
+            <h3>Course Completion</h3>
+            <p>Successfully Completed</p>
+            <a href="successfully completed -4.pdf" class="cert-btn" target="_blank">View Certificate</a>
+        </div>
+
+        <!-- General Certificate -->
+        <div class="cert-card">
+            <div class="cert-icon">📜</div>
+            <h3>Additional Certification</h3>
+            <p>Professional Development</p>
+            <a href="certificate.pdf" class="cert-btn" target="_blank">View Certificate</a>
+        </div>
     </div>
+</section>
 
+<!-- Add this CSS to your <style> section -->
+<style>
+/* Certifications Grid */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.cert-card {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+    border-color: #4a90e2;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.cert-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.cert-card h3 {
+    color: #2a5298;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.cert-card p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.cert-btn {
+    display: inline-block;
+    background: #2a5298;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.cert-btn:hover {
+    background: #1e3c72;
+    transform: scale(1.05);
+}
+</style>
     <!-- Footer -->
     <footer>
         <p>Get in touch: <a href="mailto:akalyasub1234@gmail.com">akalyasub1234@gmail.com</a></p>
