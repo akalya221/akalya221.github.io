@@ -10,29 +10,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        <script>
-const button = document.querySelector('.direct-btn');
-
-button.addEventListener('mousemove', (e) => {
-    const rect = button.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = (y - centerY) / 12;
-    const rotateY = (centerX - x) / 12;
-
-    button.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-});
-
-button.addEventListener('mouseleave', () => {
-    button.style.transform = 'rotateX(0) rotateY(0) scale(1)';
-});
-</script>
-
-
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
@@ -646,56 +624,41 @@ button.addEventListener('mouseleave', () => {
         flex-direction: column;
     }
 }
-/* Cursor Hover Effects */
-#contact {
-    position: relative;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    .direct-btn {
+    background: linear-gradient(135deg, #0b3c8c, #1e5fd4);
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    width: fit-content;
+
+    /* 3D */
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
 }
 
-/* Card lift effect */
-#contact:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-}
-
-/* Input hover glow */
-.direct-contact-form input:hover,
-.direct-contact-form textarea:hover {
-    border-color: #4a90e2;
-    box-shadow: 0 0 15px rgba(74,144,226,0.35);
-}
-
-/* Button hover glow */
-.direct-btn {
-    position: relative;
-    overflow: hidden;
-}
-
-/* Ripple effect */
+/* Glow */
 .direct-btn::after {
     content: '';
     position: absolute;
-    width: 0;
-    height: 0;
-    background: rgba(255,255,255,0.4);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.35), transparent);
+    opacity: 0;
+    transition: 0.3s;
+    border-radius: 12px;
 }
 
 .direct-btn:hover::after {
-    width: 300px;
-    height: 300px;
+    opacity: 1;
 }
 
-/* Cursor pointer */
-.direct-contact-form input,
-.direct-contact-form textarea,
-.direct-btn {
-    cursor: pointer;
-}
-
+    
 </style>
+
     <!-- Footer -->
 
     <!-- Contact Section -->
@@ -704,8 +667,8 @@ button.addEventListener('mouseleave', () => {
 
     <form class="direct-contact-form" onsubmit="handleSubmit(event)">
         <div class="contact-row">
-            <input type="text" placeholder="Your Full Name" required>
-            <input type="email" placeholder="Your Email Address" required>
+            <input type="text" placeholder="akalya" required>
+            <input type="email" placeholder="akalyasub1234@gmail.com" required>
         </div>
 
         <input type="text" placeholder="Subject" required>
@@ -722,7 +685,37 @@ button.addEventListener('mouseleave', () => {
         <p>Get in touch: <a href="mailto:akalyasub1234@gmail.com">akalyasub1234@gmail.com</a></p>
         <p>© 2025 akalya. All rights reserved.</p>
     </footer>
+<script>
+const button = document.querySelector('.direct-btn');
 
+button.addEventListener('mousemove', (e) => {
+    const rect = button.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+
+    button.style.transform = `
+        perspective(600px)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        scale(1.08)
+    `;
+});
+
+button.addEventListener('mouseleave', () => {
+    button.style.transform = `
+        perspective(600px)
+        rotateX(0deg)
+        rotateY(0deg)
+        scale(1)
+    `;
+});
+</script>
     <!-- Scroll to Top Button -->
     <div class="scroll-top" onclick="scrollToTop()">↑</div>
 
