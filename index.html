@@ -811,9 +811,7 @@ footer a:hover { color: #a78bfa; }
 
     <section id="contact" class="section">
         <h2 class="section-title">Direct Inquiry</h2>
-        <form class="direct-contact-form" onsubmit="handleSubmit(event)">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
+        <form class="direct-contact-form" onsubmit="handleSubmit(event)"
             <input type="text" placeholder="Subject" required>
             <textarea placeholder="Write your message here..." rows="6" required></textarea>
             <button type="submit" class="direct-btn">Send Message ✈️</button>
@@ -832,7 +830,7 @@ footer a:hover { color: #a78bfa; }
 
 <script>
 // Typing Effect
-const roles = ["Software Developer", "AI & ML Enthusiast", "Full Stack Developer", "Problem Solver"];
+const roles = ["Software Developer", "Full Stack Developer", "Problem Solver"];
 let roleIndex = 0, charIndex = 0, isDeleting = false;
 
 function typeEffect() {
