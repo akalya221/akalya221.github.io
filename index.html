@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,11 +6,7 @@
 <title>Akalya S - Software Developer</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -18,9 +14,9 @@ body {
     color: #e0e0e0;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    cursor: none;
 }
 
-/* Animated Background */
 .animated-bg {
     position: fixed;
     width: 100%;
@@ -36,7 +32,6 @@ body {
     50% { background-position: 100% 50%; }
 }
 
-/* Floating particles */
 .particle {
     position: fixed;
     background: rgba(100, 200, 255, 0.3);
@@ -52,7 +47,6 @@ body {
     100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
 }
 
-/* Hero Section */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -73,10 +67,7 @@ body {
     animation: rotate 30s linear infinite;
 }
 
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
 .profile-container {
     position: relative;
@@ -132,20 +123,9 @@ body {
     z-index: 0;
 }
 
-@keyframes rotate {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
 @keyframes pulse-ring {
-    0%, 100% { 
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% { 
-        opacity: 0.7;
-        transform: translate(-50%, -50%) scale(1.05);
-    }
+    0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.05); }
 }
 
 .profile-container:hover .profile-img {
@@ -166,11 +146,6 @@ body {
     50% { transform: translateY(-20px) scale(1.05); }
 }
 
-.profile-img:hover {
-    transform: scale(1.15) rotate(5deg);
-    box-shadow: 0 0 60px rgba(100, 200, 255, 0.8), 0 0 120px rgba(100, 200, 255, 0.5);
-}
-
 .hero h1 {
     font-size: 4em;
     margin-bottom: 15px;
@@ -185,6 +160,17 @@ body {
     z-index: 2;
 }
 
+.hero h1:hover { animation: glitch 0.3s infinite, gradientText 5s ease infinite; }
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
 @keyframes gradientText {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -196,12 +182,7 @@ body {
     color: #a78bfa;
     position: relative;
     z-index: 2;
-    animation: fadeInUp 1s ease-out;
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    min-height: 50px;
 }
 
 .subtitle::after {
@@ -210,12 +191,8 @@ body {
     margin-left: 5px;
 }
 
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-/* Navigation */
 .nav {
     display: flex;
     gap: 40px;
@@ -230,6 +207,12 @@ body {
     border: 1px solid rgba(100, 200, 255, 0.2);
     z-index: 100;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.8s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 .nav a {
@@ -254,16 +237,9 @@ body {
     z-index: -1;
 }
 
-.nav a:hover {
-    color: white;
-    transform: translateY(-3px);
-}
+.nav a:hover { color: white; transform: translateY(-3px); }
+.nav a:hover::before { opacity: 1; }
 
-.nav a:hover::before {
-    opacity: 1;
-}
-
-/* Container */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -280,20 +256,39 @@ body {
     border: 1px solid rgba(100, 200, 255, 0.1);
     opacity: 0;
     transform: translateY(50px);
-    animation: sectionFadeIn 0.8s forwards;
     transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #64c8ff, #a78bfa, transparent);
+    animation: wave-slide 3s ease-in-out infinite;
+}
+
+@keyframes wave-slide { 0% { left: -100%; } 100% { left: 100%; } }
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: sectionBounce 0.8s ease-out;
+}
+
+@keyframes sectionBounce {
+    0% { transform: translateY(50px) scale(0.9); opacity: 0; }
+    50% { transform: translateY(-10px) scale(1.02); }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
 .section:hover {
     border-color: rgba(100, 200, 255, 0.3);
     box-shadow: 0 25px 70px rgba(100, 200, 255, 0.2);
-}
-
-@keyframes sectionFadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .section-title {
@@ -318,35 +313,25 @@ body {
     animation: pulse 2s ease-in-out infinite;
 }
 
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
-/* About Section */
 .about-content p {
     font-size: 1.15em;
     line-height: 2;
     margin-bottom: 25px;
     color: #d0d0d0;
-    opacity: 0;
-    animation: fadeInText 0.8s forwards;
-}
-
-.about-content p:nth-child(1) { animation-delay: 0.2s; }
-.about-content p:nth-child(2) { animation-delay: 0.4s; }
-.about-content p:nth-child(3) { animation-delay: 0.6s; }
-
-@keyframes fadeInText {
-    from { opacity: 0; transform: translateX(-20px); }
-    to { opacity: 1; transform: translateX(0); }
 }
 
 .about-content p::before {
     content: '🎓 ';
     margin-right: 10px;
     font-size: 1.2em;
+    display: inline-block;
+    animation: bounce-icon 2s ease-in-out infinite;
 }
+
+@keyframes bounce-icon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
 .about-content p:nth-child(2)::before { content: '💻 '; }
 .about-content p:nth-child(3)::before { content: '🏆 '; }
 
@@ -397,9 +382,7 @@ body {
     transition: transform 0.4s;
 }
 
-.btn:hover::before {
-    transform: translateX(100%);
-}
+.btn:hover::before { transform: translateX(100%); }
 
 .btn-dark { 
     background: linear-gradient(135deg, #24292e, #1a1f2e);
@@ -418,7 +401,6 @@ body {
     box-shadow: 0 10px 30px rgba(100, 200, 255, 0.4);
 }
 
-/* Skills */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -443,11 +425,15 @@ body {
 .skill-item::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #64c8ff, #a78bfa);
-    opacity: 0;
-    transition: opacity 0.4s;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, #64c8ff, #a78bfa);
+    transition: width 1s ease-out;
 }
+
+.skill-item.animate::before { width: 100%; }
 
 .skill-item:hover {
     transform: translateY(-10px) scale(1.08);
@@ -455,11 +441,6 @@ body {
     box-shadow: 0 15px 40px rgba(100, 200, 255, 0.3);
 }
 
-.skill-item:hover::before {
-    opacity: 0.1;
-}
-
-/* Projects */
 .projects-grid, .certifications-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -489,9 +470,7 @@ body {
     transition: transform 0.4s;
 }
 
-.project-card:hover::before, .cert-card:hover::before {
-    transform: scaleX(1);
-}
+.project-card:hover::before, .cert-card:hover::before { transform: scaleX(1); }
 
 .project-card:hover, .cert-card:hover {
     transform: translateY(-12px) scale(1.02);
@@ -511,7 +490,7 @@ body {
     margin-bottom: 20px;
 }
 
-.project-tech, .cert-btn { 
+.project-tech { 
     margin-top: 20px;
     display: flex;
     gap: 10px;
@@ -527,14 +506,14 @@ body {
     text-decoration: none;
     transition: all 0.3s;
     font-weight: 500;
+    display: inline-block;
 }
 
 .tech-tag:hover, .cert-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(3deg);
     box-shadow: 0 5px 15px rgba(100, 200, 255, 0.4);
 }
 
-/* Contact Form */
 .direct-contact-form {
     display: flex;
     flex-direction: column;
@@ -561,6 +540,7 @@ body {
     border-color: #64c8ff;
     box-shadow: 0 0 20px rgba(100, 200, 255, 0.3);
     background: rgba(26, 31, 58, 0.8);
+    transform: translateY(-3px);
 }
 
 .direct-btn {
@@ -577,25 +557,11 @@ body {
     overflow: hidden;
 }
 
-.direct-btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #a78bfa, #64c8ff);
-    opacity: 0;
-    transition: opacity 0.4s;
-}
-
 .direct-btn:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 20px 40px rgba(100, 200, 255, 0.4);
 }
 
-.direct-btn:hover::before {
-    opacity: 1;
-}
-
-/* Footer */
 footer {
     background: rgba(10, 14, 39, 0.9);
     color: #d0d0d0;
@@ -605,16 +571,9 @@ footer {
     border-top: 2px solid rgba(100, 200, 255, 0.2);
 }
 
-footer a { 
-    color: #64c8ff;
-    transition: color 0.3s;
-}
+footer a { color: #64c8ff; transition: color 0.3s; }
+footer a:hover { color: #a78bfa; }
 
-footer a:hover {
-    color: #a78bfa;
-}
-
-/* Scroll to Top */
 .scroll-top {
     position: fixed;
     bottom: 40px;
@@ -629,23 +588,20 @@ footer a:hover {
     justify-content: center;
     cursor: pointer;
     font-size: 1.8em;
-    animation: bounce 2s infinite;
     box-shadow: 0 10px 30px rgba(100, 200, 255, 0.4);
     transition: all 0.3s;
     z-index: 1000;
+    opacity: 0;
+    transform: scale(0);
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
+.scroll-top.visible { opacity: 1; transform: scale(1); }
 
 .scroll-top:hover { 
-    transform: scale(1.15);
+    transform: scale(1.15) rotate(360deg);
     box-shadow: 0 15px 40px rgba(100, 200, 255, 0.6);
 }
 
-/* Glowing Trail Cursor Effect */
 .cursor-dot {
     position: fixed;
     width: 8px;
@@ -670,64 +626,61 @@ footer a:hover {
     box-shadow: 0 0 15px rgba(100, 200, 255, 0.3);
 }
 
-.trail-particle {
+.progress-bar {
     position: fixed;
-    border-radius: 50%;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #64c8ff, #a78bfa);
+    z-index: 10001;
+    transition: width 0.1s ease;
+    box-shadow: 0 0 10px rgba(100, 200, 255, 0.5);
+}
+
+.floating-badges {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     pointer-events: none;
-    z-index: 9998;
-    animation: trailFade 0.8s ease-out forwards;
+    z-index: 1;
 }
 
-@keyframes trailFade {
-    0% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0);
-    }
+.badge {
+    position: absolute;
+    font-size: 3em;
+    opacity: 0.3;
+    animation: floatBadge 20s infinite ease-in-out;
 }
 
-/* Custom Cursor */
-body {
-    cursor: none;
+.badge-1 { top: 20%; left: 10%; animation-delay: 0s; }
+.badge-2 { top: 60%; right: 15%; animation-delay: 5s; }
+.badge-3 { bottom: 25%; left: 20%; animation-delay: 10s; }
+.badge-4 { top: 40%; right: 25%; animation-delay: 15s; }
+
+@keyframes floatBadge {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+    25% { transform: translateY(-30px) rotate(10deg); opacity: 0.5; }
+    50% { transform: translateY(0) rotate(-10deg); opacity: 0.3; }
+    75% { transform: translateY(30px) rotate(5deg); opacity: 0.5; }
 }
 
-a, button, .skill-item, .project-card, .cert-card, input, textarea {
-    cursor: none;
-}
-
-a:hover ~ .cursor-outline,
-button:hover ~ .cursor-outline,
-.skill-item:hover ~ .cursor-outline,
-.project-card:hover ~ .cursor-outline,
-.cert-card:hover ~ .cursor-outline {
-    transform: scale(1.5);
-    border-color: #a78bfa;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
     .hero h1 { font-size: 2.5em; }
     .hero .subtitle { font-size: 1.3em; }
     .nav { gap: 20px; padding: 15px 25px; }
     .section { padding: 30px; }
     .profile-buttons { flex-direction: column; }
-    
-    body {
-        cursor: auto;
-    }
-    
-    .butterfly {
-        display: none;
-    }
+    body { cursor: auto; }
+    .cursor-dot, .cursor-outline, .floating-badges { display: none; }
 }
 </style>
 </head>
 <body>
 
 <div class="animated-bg"></div>
+<div class="progress-bar"></div>
 
 <section class="hero">
     <div class="profile-container">
@@ -737,7 +690,7 @@ button:hover ~ .cursor-outline,
         <img src="https://raw.githubusercontent.com/akalya221/akalya221.github.io/main/profile.jpg" alt="Profile" class="profile-img">
     </div>
     <h1>Akalya S</h1>
-    <div class="subtitle">Software Developer</div>
+    <div class="subtitle" id="typedText"></div>
     <nav class="nav">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
@@ -746,6 +699,13 @@ button:hover ~ .cursor-outline,
         <a href="#contact">Contact</a>
     </nav>
 </section>
+
+<div class="floating-badges">
+    <div class="badge badge-1">💡</div>
+    <div class="badge badge-2">🎯</div>
+    <div class="badge badge-3">⚡</div>
+    <div class="badge badge-4">🚀</div>
+</div>
 
 <div class="container">
     <section id="about" class="section">
@@ -822,32 +782,27 @@ button:hover ~ .cursor-outline,
         <h2 class="section-title">Certifications</h2>
         <div class="certifications-grid">
             <div class="cert-card">
-                <div class="cert-icon">🎓</div>
-                <h3>NPTEL Elite+silver Certification</h3>
+                <h3>🎓 NPTEL Elite+silver Certification</h3>
                 <p>Introduction to Industry 4.0 and Industrial IoT</p>
                 <a href="nptel-certificate.pdf" class="cert-btn" target="_blank">View Certificate</a>
             </div>
             <div class="cert-card">
-                <div class="cert-icon">💼</div>
-                <h3>Online Internship</h3>
+                <h3>💼 Online Internship</h3>
                 <p>Company: CodSoft</p>
                 <a href="successfully completed -4.pdf" class="cert-btn" target="_blank">View Certificate</a>
             </div>
             <div class="cert-card">
-                <div class="cert-icon">☁️</div>
-                <h3>Cloud Computing</h3>
+                <h3>☁️ Cloud Computing</h3>
                 <p>NPTEL Certification</p>
                 <a href="Cloud Computing.pdf" class="cert-btn" target="_blank">View Certificate</a>
             </div>
             <div class="cert-card">
-                <div class="cert-icon">✅</div>
-                <h3>Introduction to LLM</h3>
+                <h3>✅ Introduction to LLM</h3>
                 <p>NPTEL Certification</p>
                 <a href="codsoft-internship.pdf" class="cert-btn" target="_blank">View Certificate</a>
             </div>
             <div class="cert-card">
-                <div class="cert-icon">📜</div>
-                <h3>Additional Certification</h3>
+                <h3>📜 Additional Certification</h3>
                 <p>Professional Development</p>
                 <a href="certificate.pdf" class="cert-btn" target="_blank">View Certificate</a>
             </div>
@@ -872,144 +827,146 @@ button:hover ~ .cursor-outline,
 </footer>
 
 <div class="scroll-top" onclick="scrollToTop()">↑</div>
-
-<!-- Custom Cursor Elements -->
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
 
 <script>
-// Create floating particles
+// Typing Effect
+const roles = ["Software Developer", "AI & ML Enthusiast", "Full Stack Developer", "Problem Solver"];
+let roleIndex = 0, charIndex = 0, isDeleting = false;
+
+function typeEffect() {
+    const el = document.getElementById('typedText');
+    const current = roles[roleIndex];
+    
+    if (!isDeleting && charIndex < current.length) {
+        el.textContent = current.substring(0, charIndex + 1);
+        charIndex++;
+        setTimeout(typeEffect, 100);
+    } else if (isDeleting && charIndex > 0) {
+        el.textContent = current.substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(typeEffect, 50);
+    } else if (!isDeleting && charIndex === current.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 2000);
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(typeEffect, 500);
+    }
+}
+
+typeEffect();
+
+// Create particles
 function createParticles() {
-    const particleCount = 30;
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.width = Math.random() * 4 + 2 + 'px';
-        particle.style.height = particle.style.width;
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 20 + 's';
-        particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-        document.body.appendChild(particle);
+    for (let i = 0; i < 30; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.width = Math.random() * 4 + 2 + 'px';
+        p.style.height = p.style.width;
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDelay = Math.random() * 20 + 's';
+        p.style.animationDuration = (Math.random() * 10 + 15) + 's';
+        document.body.appendChild(p);
     }
 }
 
 createParticles();
 
-// Glowing Trail Cursor Effect
+// Custom Cursor
 const cursorDot = document.querySelector('.cursor-dot');
 const cursorOutline = document.querySelector('.cursor-outline');
-
-let mouseX = 0;
-let mouseY = 0;
-let outlineX = 0;
-let outlineY = 0;
+let mouseX = 0, mouseY = 0, outlineX = 0, outlineY = 0;
 
 document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    
     cursorDot.style.left = mouseX + 'px';
     cursorDot.style.top = mouseY + 'px';
-    
-    // Create glowing trail particles
-    createTrailParticle(mouseX, mouseY);
 });
 
-function animateCursorOutline() {
+function animateCursor() {
     outlineX += (mouseX - outlineX) * 0.15;
     outlineY += (mouseY - outlineY) * 0.15;
-    
     cursorOutline.style.left = outlineX - 15 + 'px';
     cursorOutline.style.top = outlineY - 15 + 'px';
-    
-    requestAnimationFrame(animateCursorOutline);
+    requestAnimationFrame(animateCursor);
 }
 
-animateCursorOutline();
+animateCursor();
 
-let trailTimer;
-function createTrailParticle(x, y) {
-    clearTimeout(trailTimer);
-    trailTimer = setTimeout(() => {
-        const particle = document.createElement('div');
-        particle.className = 'trail-particle';
-        
-        const size = Math.random() * 8 + 4;
-        particle.style.width = size + 'px';
-        particle.style.height = size + 'px';
-        particle.style.left = x + 'px';
-        particle.style.top = y + 'px';
-        
-        const colors = [
-            'rgba(100, 200, 255, 0.8)',
-            'rgba(167, 139, 250, 0.8)',
-            'rgba(255, 110, 199, 0.8)',
-            'rgba(100, 255, 218, 0.8)'
-        ];
-        
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.background = color;
-        particle.style.boxShadow = `0 0 15px ${color}, 0 0 30px ${color}`;
-        
-        document.body.appendChild(particle);
-        
-        setTimeout(() => {
-            particle.remove();
-        }, 800);
-    }, 10);
-}
-
-// Cursor interaction effects
-const interactiveElements = document.querySelectorAll('a, button, .skill-item, .project-card, .cert-card, input, textarea');
-
-interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        cursorOutline.style.transform = 'scale(1.5)';
-        cursorOutline.style.borderColor = '#a78bfa';
-        cursorDot.style.transform = 'scale(1.5)';
-        cursorDot.style.background = '#a78bfa';
-    });
+// Progress Bar
+window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercent = (scrollTop / scrollHeight) * 100;
+    document.querySelector('.progress-bar').style.width = scrollPercent + '%';
     
-    el.addEventListener('mouseleave', () => {
-        cursorOutline.style.transform = 'scale(1)';
-        cursorOutline.style.borderColor = 'rgba(100, 200, 255, 0.5)';
-        cursorDot.style.transform = 'scale(1)';
-        cursorDot.style.background = '#64c8ff';
-    });
+    // Show/hide scroll button
+    const scrollBtn = document.querySelector('.scroll-top');
+    if (window.pageYOffset > 300) {
+        scrollBtn.classList.add('visible');
+    } else {
+        scrollBtn.classList.remove('visible');
+    }
 });
 
-function handleSubmit(event) {
-    event.preventDefault();
-    alert('Thank you for your message! I will get back to you soon.');
-    event.target.reset();
-}
-
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    });
-});
-
-// Intersection Observer for animations
+// Intersection Observer
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = 'running';
+            entry.target.classList.add('visible');
+            if (entry.target.id === 'skills') {
+                const skills = entry.target.querySelectorAll('.skill-item');
+                skills.forEach((item, i) => {
+                    setTimeout(() => item.classList.add('animate'), i * 100);
+                });
+            }
         }
     });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.section').forEach(section => {
-    observer.observe(section);
+document.querySelectorAll('.section').forEach(s => observer.observe(s));
+
+// 3D Tilt for Cards
+document.querySelectorAll('.project-card, .cert-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px) scale(1.02)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+    });
+});
+
+// Form Submit
+function handleSubmit(e) {
+    e.preventDefault();
+    alert('Thank you for your message! I will get back to you soon.');
+    e.target.reset();
+}
+
+// Scroll to Top
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Smooth scroll for nav
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
 });
 </script>
 </body>
