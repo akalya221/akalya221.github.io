@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 
 body {
     font-family: 'Inter', 'Poppins', sans-serif;
-    background: #0f172a;
+    background: #1e293b;
     color: #e2e8f0;
     scroll-behavior: smooth;
     overflow-x: hidden;
@@ -22,9 +22,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    background: #1e293b;
 }
 
 @keyframes gradientShift {
@@ -83,7 +81,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 24px;
-    background: rgba(30, 41, 59, 0.8);
+    background: rgba(45, 55, 72, 0.8);
     padding: 16px 40px;
     border-radius: 50px;
     backdrop-filter: blur(10px);
@@ -112,24 +110,25 @@ body {
 }
 
 .section {
-    background: rgba(30, 41, 59, 0.5);
+    background: #f8fafc;
     backdrop-filter: blur(20px);
     border-radius: 24px;
-    padding: 64px 56px;
-    margin-bottom: 48px;
-    border: 1px solid rgba(59, 130, 246, 0.1);
+    padding: 56px 48px;
+    margin-bottom: 32px;
+    border: 1px solid #e2e8f0;
     transition: all 0.3s;
+    color: #1e293b;
 }
 
 .section:hover {
     border-color: rgba(59, 130, 246, 0.3);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .section-title {
-    font-size: 2rem;
-    color: #3b82f6;
-    margin-bottom: 40px;
+    font-size: 1.875rem;
+    color: #1e40af;
+    margin-bottom: 32px;
     font-weight: 700;
     letter-spacing: -0.01em;
     display: flex;
@@ -140,34 +139,34 @@ body {
 .section-title::before {
     content: '';
     width: 4px;
-    height: 36px;
-    background: #3b82f6;
+    height: 32px;
+    background: #1e40af;
     border-radius: 2px;
 }
 
 .about-content p {
-    font-size: 1.125rem;
+    font-size: 1rem;
     line-height: 1.8;
     margin-bottom: 20px;
-    color: #cbd5e1;
+    color: #475569;
 }
 
 .info-box {
     background: rgba(59, 130, 246, 0.05);
-    padding: 32px;
+    padding: 28px;
     border-radius: 16px;
-    margin-top: 32px;
+    margin-top: 28px;
     border-left: 4px solid #3b82f6;
 }
 
 .info-box p { 
-    color: #cbd5e1;
+    color: #475569;
     margin-bottom: 12px;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 .info-box strong {
-    color: #e2e8f0;
+    color: #1e293b;
     font-weight: 600;
 }
 
@@ -238,7 +237,7 @@ body {
 }
 
 .project-card {
-    background: rgba(30, 41, 59, 0.6);
+    background: rgba(45, 55, 72, 0.6);
     padding: 32px;
     border-radius: 16px;
     transition: all 0.3s;
@@ -290,7 +289,7 @@ body {
 }
 
 .cert-card {
-    background: rgba(30, 41, 59, 0.6);
+    background: rgba(45, 55, 72, 0.6);
     padding: 28px;
     border-radius: 16px;
     transition: all 0.3s;
@@ -348,7 +347,7 @@ body {
     border-radius: 12px;
     border: 1px solid rgba(59, 130, 246, 0.2);
     font-size: 1rem;
-    background: rgba(30, 41, 59, 0.5);
+    background: rgba(45, 55, 72, 0.5);
     color: #e2e8f0;
     backdrop-filter: blur(10px);
     transition: all 0.3s;
@@ -364,7 +363,7 @@ body {
 .direct-contact-form textarea:focus {
     outline: none;
     border-color: #3b82f6;
-    background: rgba(30, 41, 59, 0.7);
+    background: rgba(45, 55, 72, 0.7);
 }
 
 .direct-btn {
@@ -386,7 +385,7 @@ body {
 }
 
 footer {
-    background: rgba(15, 23, 42, 0.9);
+    background: rgba(26, 32, 44, 0.9);
     color: #cbd5e1;
     text-align: center;
     padding: 32px 20px;
@@ -550,20 +549,15 @@ footer a:hover {
                 <a href="successfully completed -4.pdf" class="cert-btn" target="_blank">View Certificate</a>
             </div>
             <div class="cert-card">
-                <h3>NPTEL Completed</h3>
-                <p>Cloud Computing</p>
+                <h3>Cloud Computing</h3>
+                <p>NPTEL Certification</p>
                 <a href="Cloud Computing.pdf" class="cert-btn" target="_blank">View Certificate</a>
             </div>
             <div class="cert-card">
-                <h3>NPTEL ELITE</h3>
-                <p>Introduction to LLM</p>
+                <h3>Introduction to LLM</h3>
+                <p>NPTEL Certification</p>
                 <a href="codsoft-internship.pdf" class="cert-btn" target="_blank">View Certificate</a>
-            </div> <div class="cert-card">
-                <h3>NPTEL ELITE</h3>
-                <p>Introduction to ML</p>
-                <a href="Introduction to Machine Learning.pdf" class="cert-btn" target="_blank">View Certificate</a>
             </div>
-            
         </div>
     </section>
 
